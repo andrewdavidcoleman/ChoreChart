@@ -1,12 +1,18 @@
 import React, { useContext } from 'react';
 import { Context } from '../context/ChoreContext';
 import ChoreListItem from '../components/ChoreListItem';
+import { Link } from "react-router-dom"
 
 const ChoreList = () => {
-    const { state, deleteBlogPost } = useContext(Context);
+
+    const { state, addChore } = useContext(Context);
     const chores = state.map((chore) =>
         <ChoreListItem chore={chore} key={chore.id.toString()}/>
     );
+
+    const handlePlusClick = () => {
+        console.log('navigate to add chore screen');
+    }
 
     return (
         <ul>
@@ -22,7 +28,9 @@ const ChoreList = () => {
             </li>
             {chores}
             <li>
-                <i className="fas fa-plus"></i>
+                <Link to="/AddChore">
+                    <i className="fas fa-plus" onClick={handlePlusClick}></i>
+                </Link >
             </li>
         </ul>
     )

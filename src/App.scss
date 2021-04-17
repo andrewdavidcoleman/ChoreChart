@@ -26,7 +26,7 @@ html, body {
   height: 100%;
   display: grid;
   grid-template-columns: 75% 25%;
-  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-rows: 1fr 8fr;
 }
 
 header, main, aside {
@@ -38,6 +38,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid $lightThemeBorderColor;
 
   h1, h6 {
     margin: 0;
@@ -71,6 +72,10 @@ main {
     margin: 0;
     li {
 
+      i {
+        cursor: pointer;
+      }
+
       &:first-child {
         height: 3em;
         align-items: flex-end;
@@ -89,9 +94,13 @@ main {
       border-radius: .2em;
 
       &.chore {
+
         border: 1px solid $lightThemeBorderColor;
+
         .day {
+
           display: flex;
+          
           .circle {
             height: 3em;
             width: 3em;
@@ -112,20 +121,16 @@ main {
       .day {
         flex: 1 1 3em;
       }
-
-      &:last-child {
-        i {
-          cursor: pointer;
-        }
-      }
     }
   }
 }
 
 aside {
+  border-left: 1px solid $lightThemeBorderColor;
   display: flex;
   flex-direction: column;
   justify-content: start;
+  
   div {
     padding-bottom: 1em;
   }

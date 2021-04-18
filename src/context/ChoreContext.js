@@ -20,6 +20,7 @@ const choreReducer = (state, action) => {
 }
 
 const addChore = dispatch => {
+  console.log('add chore')
   return (name, instructions, value, callback) => {
     dispatch({ type: 'add_Chore', payload: { name, instructions, value } })
     callback()

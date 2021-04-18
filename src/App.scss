@@ -58,7 +58,7 @@ header {
     i {    
       font-size: 3em;
       border: 1px solid $lightThemeBorderColor;
-      border-radius: 32px;
+      border-radius: 2em;
       padding: 0.3em;
       margin: .2em;
     }
@@ -120,6 +120,49 @@ main {
 
       .day {
         flex: 1 1 3em;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-top: 1em;
+    }
+
+    input, textarea {
+
+      background-color: transparent;
+      border: 1px solid $lightThemeBorderColor;
+      border-radius: .2em;
+      &:focus {
+        outline: none;
+        border-color: $lightThemeColor2;
+      }
+
+      &[name="chorename"] {
+        height: 1.5em;
+        max-width: 25em;
+      }
+  
+      &[name="choreinstructions"] {
+        max-width: 50em;
+        height: 5em;
+      }
+  
+      &[name="chorevalue"] {
+        height: 1.5em;
+        max-width: 10em;
+      }
+  
+      &[type="submit"] {
+        margin-top: 1em;
+        max-width: 20em;
+        height: 2em;
+        width: 5em;
+        cursor: pointer;
       }
     }
   }

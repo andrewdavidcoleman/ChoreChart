@@ -10,10 +10,6 @@ const ChoreList = () => {
         <ChoreListItem chore={chore} key={chore.id.toString()}/>
     );
 
-    const handlePlusClick = () => {
-        console.log('navigate to add chore screen');
-    }
-
     return (
         <ul>
             <li className="border-bottom">
@@ -29,7 +25,7 @@ const ChoreList = () => {
             {chores}
             <li>
                 <Link to="/AddChore">
-                    <i className="fas fa-plus" onClick={handlePlusClick}></i>
+                    <i className="fas fa-plus"></i>
                 </Link >
             </li>
         </ul>

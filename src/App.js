@@ -31,16 +31,16 @@ export default () => {
       <Router>
         <div>
           <Switch>
-            <Route path="/addChore">
+            <Route path="/ChoreChart/addChore">
               <AddChore />
             </Route>
-            <Route path="/editChore/:id">
+            <Route path="/ChoreChart/editChore/:id">
               <EditChore />
             </Route>
-            <Route path="/choreDetail/:id">
+            <Route path="/ChoreChart/choreDetail/:id">
               <ChoreDetail />
             </Route>
-            <Route path="/">
+            <Route path="/ChoreChart">
               <ChoreList />
             </Route>
           </Switch>

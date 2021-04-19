@@ -10,7 +10,7 @@ const ChoreDetail = () => {
 
     return (
         <>
-            <Link to="/">
+            <Link to="/ChoreChart">
                 <i className="fas fa-chevron-left"></i>
             </Link>
             <div>

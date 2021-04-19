@@ -12,7 +12,7 @@ const EditChore = () => {
     return <ChoreForm
         initialValues={{ id, name: chore.name, instructions: chore.instructions, value: chore.value}}
         onSubmit={(id, name, instructions, value) => {
-            editChore(id, name, instructions, value, () => history.push('/'))
+            editChore(id, name, instructions, value, () => history.push('/ChoreChart'))
         }}
     />
 }

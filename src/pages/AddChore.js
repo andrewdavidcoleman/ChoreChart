@@ -8,7 +8,7 @@ const AddChore = () => {
     const history = useHistory();
 
     return <ChoreForm onSubmit={(id, name, instructions, value) => {
-        addChore(name, instructions, value, () => history.push('/'))
+        addChore(name, instructions, value, () => history.push('/ChoreChart'))
     }}/>
 }
 

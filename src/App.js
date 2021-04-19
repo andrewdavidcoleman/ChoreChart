@@ -10,6 +10,7 @@ import {
 import Toggle from 'react-toggle'
 import ChoreList from './pages/ChoreList'
 import AddChore from './pages/AddChore'
+import ChoreDetail from './pages/ChoreDetail'
 import EditChore from './pages/EditChore'
 
 export default () => {
@@ -43,8 +44,11 @@ export default () => {
             <Route path="/addChore">
               <AddChore />
             </Route>
-            <Route path="/editChore">
+            <Route path="/editChore/:id">
               <EditChore />
+            </Route>
+            <Route path="/choreDetail/:id">
+              <ChoreDetail />
             </Route>
             <Route path="/">
               <ChoreList />
@@ -55,8 +59,6 @@ export default () => {
       </main>
       <aside>
         <div>Amount saved: [CURRENT AMT SAVED]</div>
-        <div>Goal: [GOAL]</div>
-        <div>Saving for: [SAVING FOR]</div>
       </aside>
     </Provider>
   );

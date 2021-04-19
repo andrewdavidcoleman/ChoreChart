@@ -66,6 +66,15 @@ header {
 }
 
 main {
+
+  a, i {
+    color: $lightThemeColor3;
+    text-decoration: none;
+    &:hover {
+      color: $lightThemeColor2;
+    }
+  }
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -97,11 +106,18 @@ main {
 
         border: 1px solid $lightThemeBorderColor;
 
+        i {
+          margin: 0 .5em;
+        }
+
         .day {
 
           display: flex;
           
           .circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 3em;
             width: 3em;
             border: 1px solid $lightThemeBorderColor;
@@ -114,8 +130,13 @@ main {
         }
       }
 
-      .chore-name {
-        flex: 10
+      .chore-description {
+        display: inline-flex;
+        flex: 10;
+        align-items: center;
+        .name {
+          text-decoration: none;
+        }
       }
 
       .day {
@@ -133,7 +154,6 @@ main {
     }
 
     input, textarea {
-
       background-color: transparent;
       border: 1px solid $lightThemeBorderColor;
       border-radius: .2em;

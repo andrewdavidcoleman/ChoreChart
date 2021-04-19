@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const ChoreForm = ({ onSubmit, initialValues }) => {
+    const [id, setId] = useState(initialValues.id)
     const [name, setName] = useState(initialValues.name)
     const [instructions, setInstructions] = useState(initialValues.instructions)
     const [value, setValue] = useState(initialValues.value)
@@ -9,9 +10,9 @@ const ChoreForm = ({ onSubmit, initialValues }) => {
     return (
         <form onSubmit={(e) => {
             e.preventDefault()
-            onSubmit(name, instructions, value)
+            onSubmit(id, name, instructions, value)
         }}>
-            <Link to="/ChoreList">
+            <Link to="/">
                 <i className="fas fa-chevron-left"></i>
             </Link>
             <label htmlFor="name">Name:</label>
@@ -30,6 +31,7 @@ const ChoreForm = ({ onSubmit, initialValues }) => {
 
 ChoreForm.defaultProps = {
     initialValues: {
+        id: 0,
         name: '',
         instructions: '',
         value: 0

@@ -1,32 +1,32 @@
-import React, { useContext } from 'react';
-import { Context } from '../context/ChoreContext';
-import ChoreListItem from '../components/ChoreListItem';
+import React, { useContext } from 'react'
+import { Context } from '../context/ChoreContext'
+import ChoreListItem from '../components/ChoreListItem'
 import { Link } from "react-router-dom"
 
 const ChoreList = () => {
 
     const { state, addChore } = useContext(Context);
-    const chores = state.map((chore) =>
+    const chores = state.chores.map((chore) =>
         <ChoreListItem chore={chore} key={chore.id.toString()}/>
     );
 
     return (
         <ul>
             <li className="border-bottom">
-                <span className="chore-name">Chore</span>
-                <span className="day">Sunday</span>
-                <span className="day">Monday</span>
-                <span className="day">Tuesday</span>
-                <span className="day">Wednesday</span>
-                <span className="day">Thursday</span>
-                <span className="day">Friday</span>
-                <span className="day">Saturday</span>
+                <div className="chore-description">Chore</div>
+                <div className="day">Sunday</div>
+                <div className="day">Monday</div>
+                <div className="day">Tuesday</div>
+                <div className="day">Wednesday</div>
+                <div className="day">Thursday</div>
+                <div className="day">Friday</div>
+                <div className="day">Saturday</div>
             </li>
             {chores}
             <li>
                 <Link to="/AddChore">
                     <i className="fas fa-plus"></i>
-                </Link >
+                </Link>
             </li>
         </ul>
     )

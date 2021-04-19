@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ChoreChart/static/css/main.52d0d056.chunk.css",
-    "main.js": "/ChoreChart/static/js/main.5411fd0f.chunk.js",
-    "main.js.map": "/ChoreChart/static/js/main.5411fd0f.chunk.js.map",
+    "main.js": "/ChoreChart/static/js/main.10a9bac0.chunk.js",
+    "main.js.map": "/ChoreChart/static/js/main.10a9bac0.chunk.js.map",
     "runtime-main.js": "/ChoreChart/static/js/runtime-main.4452397b.js",
     "runtime-main.js.map": "/ChoreChart/static/js/runtime-main.4452397b.js.map",
     "static/js/2.c89ba605.chunk.js": "/ChoreChart/static/js/2.c89ba605.chunk.js",
     "static/js/2.c89ba605.chunk.js.map": "/ChoreChart/static/js/2.c89ba605.chunk.js.map",
     "index.html": "/ChoreChart/index.html",
-    "precache-manifest.20090d2bf26048d7e2526ad9d1d3a529.js": "/ChoreChart/precache-manifest.20090d2bf26048d7e2526ad9d1d3a529.js",
+    "precache-manifest.bcd26cdaf8487e0a602bc1d7184635d1.js": "/ChoreChart/precache-manifest.bcd26cdaf8487e0a602bc1d7184635d1.js",
     "service-worker.js": "/ChoreChart/service-worker.js",
     "static/css/main.52d0d056.chunk.css.map": "/ChoreChart/static/css/main.52d0d056.chunk.css.map",
     "static/js/2.c89ba605.chunk.js.LICENSE.txt": "/ChoreChart/static/js/2.c89ba605.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.4452397b.js",
     "static/js/2.c89ba605.chunk.js",
     "static/css/main.52d0d056.chunk.css",
-    "static/js/main.5411fd0f.chunk.js"
+    "static/js/main.10a9bac0.chunk.js"
   ]
 }

@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a3fca930d276c028e42ef6ccf5cd1891",
+    "revision": "d6bafef07c03290118359a90bb05be02",
     "url": "/ChoreChart/index.html"
   },
   {
-    "revision": "a32370ad2503a2783800",
+    "revision": "f2fead9c4305cd77fd06",
     "url": "/ChoreChart/static/css/main.52d0d056.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ChoreChart/static/js/2.c89ba605.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a32370ad2503a2783800",
-    "url": "/ChoreChart/static/js/main.5411fd0f.chunk.js"
+    "revision": "f2fead9c4305cd77fd06",
+    "url": "/ChoreChart/static/js/main.10a9bac0.chunk.js"
   },
   {
     "revision": "ca0aad8cacc4ffc02c17",

@@ -6,7 +6,7 @@ import { Context } from '../context/ChoreContext'
 const ChoreDetail = () => {
     const { id } = useParams()
     const { state, editChore } = useContext(Context)
-    const chore = state.find(chore => chore.id == id)
+    const chore = state.chores.find(chore => chore.id == id)
 
     return (
         <>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Provider } from './context/ChoreContext'
 import './App.scss'
 import {
@@ -7,31 +7,21 @@ import {
   Route,
   Link
 } from "react-router-dom"
-import Toggle from 'react-toggle'
 import ChoreList from './pages/ChoreList'
 import AddChore from './pages/AddChore'
 import ChoreDetail from './pages/ChoreDetail'
 import EditChore from './pages/EditChore'
+import Dashboard from './components/Dashboard'
+import ParentToggle from './components/ParentToggle'
 
 export default () => {
-  const baconIsReady = true;
-  const handleToggleChange = () => {
-
-  }
+  const parent = true;
 
   return (
     <Provider>
       <header>
         <h1>Chore Chart</h1>
-        <label>
-          <span>Parent</span>
-          <Toggle
-            defaultChecked={baconIsReady}
-            icons={false}
-            onChange={handleToggleChange} 
-          />
-          <span>Child</span>
-        </label>
+        <ParentToggle />
         <h6>
           [USER NAME]
           <i className="fa fas fa-user"></i>
@@ -57,9 +47,7 @@ export default () => {
         </div>
       </Router>
       </main>
-      <aside>
-        <div>Amount saved: [CURRENT AMT SAVED]</div>
-      </aside>
+      <Dashboard />
     </Provider>
   );
 };

@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { Context } from '../context/ChoreContext'
 
-const CheckCircle = () => {
-    const [status, setStatus] = useState('unchecked')
+const CheckCircle = ({ chore, day }) => {
+    const { increaseAmountSaved, decreaseAmountSaved, setCheckCircleStatus } = useContext(Context)
 
     const handleClick = () => {
-        setStatus(status === 'unchecked' ? 'checked' : 'unchecked')
+        if (day.status === 'unchecked') {
+            setCheckCircleStatus(chore.id, day.name, 'checked')
+            increaseAmountSaved(chore.value)
+        } else {
+            setCheckCircleStatus(chore.id, day.name, 'unchecked')
+            decreaseAmountSaved(chore.value)
+        }
     }
 
     return (
         <div className="day">
             <span className="circle" onClick={handleClick}>
-                {status === 'checked' 
+                {day.status === 'checked' 
                 ? <i className="fas fa-check"></i> 
-                : status === 'pending' 
+                : day.status === 'pending' 
                 ? <i class="far fa-eye"></i> 
                 : ''}
             </span>

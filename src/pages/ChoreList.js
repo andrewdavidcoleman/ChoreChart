@@ -4,8 +4,7 @@ import ChoreListItem from '../components/ChoreListItem'
 import { Link } from "react-router-dom"
 
 const ChoreList = () => {
-
-    const { state, addChore } = useContext(Context);
+    const { state, addChore } = useContext(Context)
     const chores = state.chores.map((chore) =>
         <ChoreListItem chore={chore} key={chore.id.toString()}/>
     );
@@ -21,12 +20,17 @@ const ChoreList = () => {
                 <div className="day">Thursday</div>
                 <div className="day">Friday</div>
                 <div className="day">Saturday</div>
+                <div className="day"></div>
             </li>
             {chores}
             <li>
-                <Link to="/AddChore">
-                    <i className="fas fa-plus"></i>
-                </Link>
+                {state.isParentMode ?
+                    <Link to="/AddChore">
+                        <i className="fas fa-plus"></i>
+                    </Link>
+                    :
+                    ''
+                }
             </li>
         </ul>
     )

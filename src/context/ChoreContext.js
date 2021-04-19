@@ -2,8 +2,9 @@ import createDataContext from './createDataContext';
 
 const choreReducer = (state, action) => {
   switch (action.type) {
-    case 'add_Chore':
+    case 'addChore':
       return {
+        isParentMode: state.isParentMode,
         amountSaved: state.amountSaved,
         chores: [
           ...state.chores, 
@@ -11,22 +12,65 @@ const choreReducer = (state, action) => {
             id: Math.floor(Math.random() * 99999),
             name: action.payload.name,
             instructions: action.payload.instructions,
-            value: action.payload.value
+            value: action.payload.value,
+            days: [
+              { name: 'monday', status: 'unchecked'},
+              { name: 'tuesday', status: 'unchecked'},
+              { name: 'wednesday', status: 'unchecked'},
+              { name: 'thursday', status: 'unchecked'},
+              { name: 'friday', status: 'unchecked'},
+              { name: 'saturday', status: 'unchecked'},
+              { name: 'sunday', status: 'unchecked'},
+            ]
           }
         ]
       };
-    case 'edit_Chore':
+    case 'editChore':
       return {
+        isParentMode: state.isParentMode,
         amountSaved: state.amountSaved,
         chores: state.chores.map(chore => {
-          return chore.id == action.payload.id ? action.payload : chore
+          return chore.id == action.payload.id ? Object.assign(chore, action.payload) : chore
         })
       }
-    case 'delete_Chore':
-        return {
-          amountSaved: state.amountSaved,
-          chores: state.chores.filter((chore) => chore.id !== action.payload)
-        }
+    case 'deleteChore':
+      return {
+        isParentMode: state.isParentMode,
+        amountSaved: state.amountSaved,
+        chores: state.chores.filter((chore) => chore.id !== action.payload)
+      }
+    case 'increaseAmountSaved':
+      return {
+        isParentMode: state.isParentMode,
+        amountSaved: state.amountSaved + parseInt(action.payload),
+        chores: state.chores
+      }
+    case 'decreaseAmountSaved':
+      return {
+        isParentMode: state.isParentMode,
+        amountSaved: state.amountSaved - parseInt(action.payload),
+        chores: state.chores
+      }
+    case 'setCheckCircleStatus':
+      return {
+        isParentMode: state.isParentMode,
+        amountSaved: state.amountSaved,
+        chores: state.chores.map(chore => {
+          return chore.id == action.payload.choreId 
+          ? Object.assign(chore, {
+            days: chore.days.map(day => {
+              return day.name === action.payload.day ? { name: action.payload.day, status: action.payload.status } : day
+            })
+          }) 
+          : chore
+        })
+      }
+    case 'setParentMode':
+      return {
+        isParentMode: action.payload.isParentMode,
+        amountSaved: state.amountSaved,
+        chores: state.chores
+      }
     default:
       return state;
   }
@@ -34,45 +78,100 @@ const choreReducer = (state, action) => {
 
 const addChore = dispatch => {
   return (name, instructions, value, callback) => {
-    dispatch({ type: 'add_Chore', payload: { name, instructions, value } })
+    dispatch({ type: 'addChore', payload: { name, instructions, value } })
     callback()
   };
 }
 
 const editChore = dispatch => {
   return (id, name, instructions, value, callback) => {
-    dispatch({ type: 'edit_Chore', payload: { id, name, instructions, value } })
+    dispatch({ type: 'editChore', payload: { id, name, instructions, value } })
     callback()
   };
 }
 
 const deleteChore = dispatch => {
   return (id) => {
-    dispatch({ type: 'delete_Chore', payload: id })
+    dispatch({ type: 'deleteChore', payload: id })
   }
 }
 
-const increaseAmountSave = dispatch => {
+const increaseAmountSaved = dispatch => {
   return (amount) => {
-    dispatch({ type: 'increase_AmountSaved', payload: amount })
+    dispatch({ type: 'increaseAmountSaved', payload: amount })
   }
 }
 
-const decreaseAmountSave = dispatch => {
+const decreaseAmountSaved = dispatch => {
   return (amount) => {
-    dispatch({ type: 'decrease_AmountSaved', payload: amount })
+    dispatch({ type: 'decreaseAmountSaved', payload: amount })
+  }
+}
+
+const setCheckCircleStatus = dispatch => {
+  return (choreId, day, status) => {
+    dispatch({ type: 'setCheckCircleStatus', payload: { choreId, day, status } })
+  }
+}
+
+const setParentMode = dispatch => {
+  return (isParentMode) => {
+    dispatch({ type: 'setParentMode', payload: { isParentMode } })
   }
 }
 
 export const { Context, Provider } = createDataContext(
   choreReducer,
-  { addChore, editChore, deleteChore },
+  { addChore, editChore, deleteChore, increaseAmountSaved, decreaseAmountSaved, setCheckCircleStatus, setParentMode },
   {
+    isParentMode: true,
     amountSaved: 0,
     chores: [
-      { name: 'Take trash to curb', instructions: 'Trash in the green can, recycling in blue. Replace the trash bag. Bags under the sinks', value: 2, id: 1 },
-      { name: 'Unload dishwasher', instructions: 'When dishes are clean, put back in cabinets.', value: 2, id: 2 },
-      { name: 'Clean room', instructions: 'Make bed. Put dirty clothes in basket. Pick up toys.', value: 3, id: 3 }
+      { 
+        name: 'Take out trash', 
+        instructions: 'Trash in the green can, recycling in blue. Replace the trash bag. Bags under the sink.', 
+        value: 1, 
+        id: 1,
+        days: [
+          { name: 'monday', status: 'unchecked'},
+          { name: 'tuesday', status: 'unchecked'},
+          { name: 'wednesday', status: 'unchecked'},
+          { name: 'thursday', status: 'unchecked'},
+          { name: 'friday', status: 'unchecked'},
+          { name: 'saturday', status: 'unchecked'},
+          { name: 'sunday', status: 'unchecked'},
+        ]
+      },
+      { 
+        name: 'Unload dishwasher', 
+        instructions: 'When dishes are clean, put back in cabinets.', 
+        value: 2, 
+        id: 2,
+        days: [
+          { name: 'monday', status: 'unchecked'},
+          { name: 'tuesday', status: 'unchecked'},
+          { name: 'wednesday', status: 'unchecked'},
+          { name: 'thursday', status: 'unchecked'},
+          { name: 'friday', status: 'unchecked'},
+          { name: 'saturday', status: 'unchecked'},
+          { name: 'sunday', status: 'unchecked'},
+        ]
+      },
+      { 
+        name: 'Clean room', 
+        instructions: 'Make bed. Put dirty clothes in basket. Pick up toys.', 
+        value: 3, 
+        id: 3,
+        days: [
+          { name: 'monday', status: 'unchecked'},
+          { name: 'tuesday', status: 'unchecked'},
+          { name: 'wednesday', status: 'unchecked'},
+          { name: 'thursday', status: 'unchecked'},
+          { name: 'friday', status: 'unchecked'},
+          { name: 'saturday', status: 'unchecked'},
+          { name: 'sunday', status: 'unchecked'},
+        ]
+      }
     ]
   }
 )

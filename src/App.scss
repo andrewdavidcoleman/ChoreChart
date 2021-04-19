@@ -102,6 +102,13 @@ main {
       margin-bottom: .5em;
       border-radius: .2em;
 
+      .day {
+        flex: 1 1 3em;
+        &:last-child {
+          flex: 1 1 1em;
+        }
+      }
+
       &.chore {
 
         border: 1px solid $lightThemeBorderColor;
@@ -124,6 +131,9 @@ main {
             border-radius: 4em;
             cursor: pointer;
             &:hover {
+              i {
+                color: $lightThemeColor2;
+              }
               border-color: $lightThemeColor2
             }
           }
@@ -137,10 +147,6 @@ main {
         .name {
           text-decoration: none;
         }
-      }
-
-      .day {
-        flex: 1 1 3em;
       }
     }
   }

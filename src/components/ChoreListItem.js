@@ -9,11 +9,13 @@ const ChoreListItem = ({ chore }) => {
     return (
         <li className="chore">
             <div className="chore-description">
-                <div>
-                    <Link to={`/EditChore/${chore.id}`}>
-                        <i className="fas fa-pencil-alt"></i>
-                    </Link>
-                </div>
+                {state.isParentMode ? 
+                    <div>
+                        <Link to={`/EditChore/${chore.id}`}>
+                            <i className="fas fa-pencil-alt"></i>
+                        </Link>
+                    </div>
+                : ''}
                 <div>
                     <div>
                         <Link to={`/ChoreDetail/${chore.id}`}>
@@ -25,10 +27,12 @@ const ChoreListItem = ({ chore }) => {
                     </div>
                 </div>
             </div>
-            {[...Array(7)].map((e, i) =>  <CheckCircle key={i} />)}
-            <div onClick={() => deleteChore(chore.id)}>
-                <i className="fas fa-times"></i>
-            </div>
+            {chore.days.map((day, i) =>  <CheckCircle chore={chore} day={day} key={i} />)}
+            <div className="day">
+                {state.isParentMode ? 
+                        <i className="fas fa-times" onClick={() => deleteChore(chore.id)}></i>
+                : ''}
+            </div> 
         </li>    
     )
 }

@@ -11,14 +11,14 @@ const ChoreListItem = ({ chore }) => {
             <div className="chore-description">
                 {state.isParentMode ? 
                     <div>
-                        <Link to={`/EditChore/${chore.id}`}>
+                        <Link to={`/ChoreChart/EditChore/${chore.id}`}>
                             <i className="fas fa-pencil-alt"></i>
                         </Link>
                     </div>
                 : ''}
                 <div>
                     <div>
-                        <Link to={`/ChoreDetail/${chore.id}`}>
+                        <Link to={`/ChoreChart/ChoreDetail/${chore.id}`}>
                             {chore.name}
                         </Link>
                     </div>

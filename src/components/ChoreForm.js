@@ -12,7 +12,7 @@ const ChoreForm = ({ onSubmit, initialValues }) => {
             e.preventDefault()
             onSubmit(id, name, instructions, value)
         }}>
-            <Link to="/">
+            <Link to="/ChoreChart">
                 <i className="fas fa-chevron-left"></i>
             </Link>
             <label htmlFor="name">Name:</label>

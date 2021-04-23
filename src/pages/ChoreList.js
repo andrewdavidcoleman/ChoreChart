@@ -21,6 +21,9 @@ const ChoreList = () => {
     const handleDelete = (id) => {
         api.delete(`/${id}`)
         .then((response) => {
+            console.log(id);
+            console.log(chores)
+            console.log(chores.filter((chore) => chore.id !== parseInt(id)));
             setChores(chores.filter((chore) => chore.id !== parseInt(id)))
         })
         .catch((error) => {

@@ -52,7 +52,7 @@ const ChoreList = () => {
             )}
             <li>
                 {state.isParentMode ?
-                    <Link to="ChoreChart/AddChore">
+                    <Link to="/ChoreChart/AddChore">
                         <i className="fas fa-plus"></i>
                     </Link>
                     :

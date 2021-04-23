@@ -1,12 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom"
-import { Context } from '../context/ChoreContext'
+import api from '../api'
 
 const ChoreDetail = () => {
+    const [ chore, setChore ] = useState({})
     const { id } = useParams()
-    const { state, editChore } = useContext(Context)
-    const chore = state.chores.find(chore => chore.id == id)
+
+    useEffect(() => {
+        api.get(`/${id}`)
+        .then((response) => {
+            setChore(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [])
 
     return (
         <>

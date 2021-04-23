@@ -1,10 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Context } from '../context/ChoreContext'
 import CheckCircle from '../components/CheckCircle'
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
+import api from '../api'
 
-const ChoreListItem = ({ chore }) => {
-    const { state, deleteChore } = useContext(Context);
+const ChoreListItem = ({ chore, handleDelete }) => {
+    const { state, setAmountSaved, increaseAmountSaved } = useContext(Context)
+    const [ days, setDays ] = useState([])
+
+    useEffect(() => {
+        api.get(`/days/${chore.id}`)
+        .then((response) => {
+            setDays(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [])
 
     return (
         <li className="chore">
@@ -27,12 +39,12 @@ const ChoreListItem = ({ chore }) => {
                     </div>
                 </div>
             </div>
-            {chore.days.map((day, i) =>  <CheckCircle chore={chore} day={day} key={i} />)}
+            {days.map((day, i) =>  <CheckCircle chore={chore} day={day} key={i} />)}
             <div className="day">
                 {state.isParentMode ? 
-                        <i className="fas fa-times" onClick={() => deleteChore(chore.id)}></i>
+                        <i className="fas fa-times" onClick={() => handleDelete(chore.id)}></i>
                 : ''}
-            </div> 
+            </div>
         </li>    
     )
 }

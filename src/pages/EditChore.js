@@ -1,19 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
 import { Context } from '../context/ChoreContext'
 import ChoreForm from '../components/ChoreForm'
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams } from 'react-router-dom'
+import api from '../api'
 
 const EditChore = () => {
     const history = useHistory()
     const { id } = useParams()
-    const { state, editChore } = useContext(Context)
-    const chore = state.chores.find(chore => chore.id == id)
-    
+    console.log(id);
+
+    const handleSubmit = async (id, name, instructions, value) => {
+        api.put('/', {id, name, instructions, value: ~~value})
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error.message);
+        })
+        .finally(() => {
+            history.push('/ChoreChart')
+        })
+    }
+
     return <ChoreForm
-        initialValues={{ id, name: chore.name, instructions: chore.instructions, value: chore.value}}
-        onSubmit={(id, name, instructions, value) => {
-            editChore(id, name, instructions, value, () => history.push('/ChoreChart'))
-        }}
+        onSubmit={handleSubmit}
+        initialId={id}
     />
 }
 

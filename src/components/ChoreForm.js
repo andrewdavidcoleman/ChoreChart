@@ -1,11 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import api from '../api'
 
-const ChoreForm = ({ onSubmit, initialValues }) => {
-    const [id, setId] = useState(initialValues.id)
-    const [name, setName] = useState(initialValues.name)
-    const [instructions, setInstructions] = useState(initialValues.instructions)
-    const [value, setValue] = useState(initialValues.value)
+const ChoreForm = ({ onSubmit, initialId }) => {
+    const [id, setId] = useState(0)
+    const [name, setName] = useState('')
+    const [instructions, setInstructions] = useState('')
+    const [value, setValue] = useState(0)
+
+    useEffect(() => {
+        if (initialId !== 0) {
+            api.get(`/${initialId}`)
+            .then((response) => {
+                setId(response.data.id)
+                setName(response.data.name)
+                setInstructions(response.data.instructions)
+                setValue(response.data.value)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    }, [])
 
     return (
         <form onSubmit={(e) => {
@@ -22,7 +38,7 @@ const ChoreForm = ({ onSubmit, initialValues }) => {
             <textarea name="choreinstructions" value={instructions} onChange={(e) => setInstructions(e.target.value)}/>
 
             <label htmlFor="value">Value:</label>
-            <input type="text" name="chorevalue" value={value} onChange={(e) => setValue(e.target.value)}/>
+            <input type="number" min="0" step="1" name="chorevalue" value={value} onChange={(e) => setValue(e.target.value)}/>
 
             <input type="submit" value="Save"/>
         </form>

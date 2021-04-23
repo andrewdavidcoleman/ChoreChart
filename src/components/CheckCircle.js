@@ -1,26 +1,23 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Context } from '../context/ChoreContext'
+import api from '../api'
 
 const CheckCircle = ({ chore, day }) => {
-    const { increaseAmountSaved, decreaseAmountSaved, setCheckCircleStatus } = useContext(Context)
+    const { state, setAmountSaved } = useContext(Context)
+    const [ status, setStatus ] = useState(day.status)
 
     const handleClick = () => {
-        if (day.status === 'unchecked') {
-            setCheckCircleStatus(chore.id, day.name, 'checked')
-            increaseAmountSaved(chore.value)
-        } else {
-            setCheckCircleStatus(chore.id, day.name, 'unchecked')
-            decreaseAmountSaved(chore.value)
-        }
+        //TODO: day.status === string to allow for future implementation of 'pending' status
+        setStatus(status === 'unchecked' ? 'checked' : 'unchecked')
+        api.put('/setday', { ...day, status: status === 'unchecked' ? 'checked' : 'unchecked' })
+        setAmountSaved(status === 'unchecked' ? (state.amountSaved + chore.value) : (state.amountSaved - chore.value))
     }
 
     return (
         <div className="day">
             <span className="circle" onClick={handleClick}>
-                {day.status === 'checked' 
-                ? <i className="fas fa-check"></i> 
-                : day.status === 'pending' 
-                ? <i class="far fa-eye"></i> 
+                {status === 'checked'
+                ? <i className="fas fa-check"></i>
                 : ''}
             </span>
         </div>

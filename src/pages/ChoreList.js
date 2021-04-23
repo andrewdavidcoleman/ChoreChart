@@ -1,13 +1,32 @@
-import React, { useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Context } from '../context/ChoreContext'
 import ChoreListItem from '../components/ChoreListItem'
 import { Link } from "react-router-dom"
+import api from '../api'
 
 const ChoreList = () => {
-    const { state, addChore } = useContext(Context)
-    const chores = state.chores.map((chore) =>
-        <ChoreListItem chore={chore} key={chore.id.toString()}/>
-    );
+    const { state } = useContext(Context)
+    const [ chores, setChores ] = useState([])
+
+    useEffect(() => {
+        api.get('/')
+        .then((response) => {
+            setChores(response.data)
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [])
+
+    const handleDelete = (id) => {
+        api.delete(`/${id}`)
+        .then((response) => {
+            setChores(chores.filter((chore) => chore.id !== parseInt(id)))
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
 
     return (
         <ul>
@@ -22,7 +41,12 @@ const ChoreList = () => {
                 <div className="day">Saturday</div>
                 <div className="day"></div>
             </li>
-            {chores}
+            {chores.map((chore) =>
+                <ChoreListItem 
+                chore={chore} 
+                handleDelete={() => handleDelete(chore.id)}
+                key={chore.id.toString()}/>
+            )}
             <li>
                 {state.isParentMode ?
                     <Link to="ChoreChart/AddChore">

@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/ChoreChart/static/css/main.52d0d056.chunk.css",
-    "main.js": "/ChoreChart/static/js/main.10a9bac0.chunk.js",
-    "main.js.map": "/ChoreChart/static/js/main.10a9bac0.chunk.js.map",
+    "main.js": "/ChoreChart/static/js/main.9b7fda7f.chunk.js",
+    "main.js.map": "/ChoreChart/static/js/main.9b7fda7f.chunk.js.map",
     "runtime-main.js": "/ChoreChart/static/js/runtime-main.4452397b.js",
     "runtime-main.js.map": "/ChoreChart/static/js/runtime-main.4452397b.js.map",
-    "static/js/2.c89ba605.chunk.js": "/ChoreChart/static/js/2.c89ba605.chunk.js",
-    "static/js/2.c89ba605.chunk.js.map": "/ChoreChart/static/js/2.c89ba605.chunk.js.map",
+    "static/js/2.601c5b74.chunk.js": "/ChoreChart/static/js/2.601c5b74.chunk.js",
+    "static/js/2.601c5b74.chunk.js.map": "/ChoreChart/static/js/2.601c5b74.chunk.js.map",
     "index.html": "/ChoreChart/index.html",
-    "precache-manifest.bcd26cdaf8487e0a602bc1d7184635d1.js": "/ChoreChart/precache-manifest.bcd26cdaf8487e0a602bc1d7184635d1.js",
+    "precache-manifest.fa8ce31e32bd0e9b76f4f1c49660ac5b.js": "/ChoreChart/precache-manifest.fa8ce31e32bd0e9b76f4f1c49660ac5b.js",
     "service-worker.js": "/ChoreChart/service-worker.js",
     "static/css/main.52d0d056.chunk.css.map": "/ChoreChart/static/css/main.52d0d056.chunk.css.map",
-    "static/js/2.c89ba605.chunk.js.LICENSE.txt": "/ChoreChart/static/js/2.c89ba605.chunk.js.LICENSE.txt",
+    "static/js/2.601c5b74.chunk.js.LICENSE.txt": "/ChoreChart/static/js/2.601c5b74.chunk.js.LICENSE.txt",
     "static/media/App.scss": "/ChoreChart/static/media/fa-solid-900.e8a427e1.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.4452397b.js",
-    "static/js/2.c89ba605.chunk.js",
+    "static/js/2.601c5b74.chunk.js",
     "static/css/main.52d0d056.chunk.css",
-    "static/js/main.10a9bac0.chunk.js"
+    "static/js/main.9b7fda7f.chunk.js"
   ]
 }
